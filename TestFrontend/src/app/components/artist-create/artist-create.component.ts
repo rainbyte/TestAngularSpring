@@ -29,7 +29,7 @@ export class ArtistCreateComponent {
   onAccept() {
     this.artistService.createArtist(this.createForm.value)
       .subscribe(
-        datum => { this.goBack;  },
+        datum => { this.goBack();  },
         error => { alert(error); });
   }
 

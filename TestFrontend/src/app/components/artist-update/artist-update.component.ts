@@ -42,7 +42,7 @@ export class ArtistUpdateComponent {
     this.artistService.updateArtist(this.updateForm.value)
       .pipe(first())
       .subscribe(
-        datum => { this.goBack;  },
+        datum => { this.goBack();  },
         error => { alert(error); });
   }
 
