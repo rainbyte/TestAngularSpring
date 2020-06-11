@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
 import { Artist } from "../model/artist.model";
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ArtistService {
@@ -25,7 +26,7 @@ export class ArtistService {
     return this.http.put(this.baseUrl + '/' + artist.id, artist);
   }
 
-  deleteArtist(id: number) {
-    return this.http.delete(this.baseUrl + '/' + id);
+  deleteArtist(id: number): Observable<string> {
+    return this.http.delete(this.baseUrl + '/' + id, {responseType: "text"});
   }
 }
