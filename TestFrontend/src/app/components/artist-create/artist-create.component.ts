@@ -12,7 +12,6 @@ import { Artist } from 'src/app/model/artist.model';
 })
 
 export class ArtistCreateComponent {
-  artist: Artist;
   createForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
