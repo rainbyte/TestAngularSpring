@@ -14,7 +14,6 @@ import { Artist } from 'src/app/model/artist.model';
 
 export class ArtistUpdateComponent {
 
-  artist: Artist;
   updateForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
@@ -34,7 +33,9 @@ export class ArtistUpdateComponent {
       country: ['', Validators.required]
     });
     this.artistService.getArtistById(+artistId)
-      .subscribe(this.updateForm.setValue)
+      .subscribe((artist: Artist) => {
+        this.updateForm.setValue(artist)
+      })
   }
 
   onAccept() {
