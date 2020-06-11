@@ -1,0 +1,21 @@
+<div class="root">
+  <form [formGroup]="updateForm" (ngSubmit)="onAccept()">
+    <h2>Update Artist</h2>
+    <div>
+      <label for="nameNative">Native name:</label>
+      <input type="text" [(ngModel)]="artist.nameNative" name="nameNative" formControlName="nameNative" placeholder="Artist native name" id="nameNative" required>
+    </div>
+    <div>
+      <label for="nameRomanized">Romanized name:</label>
+      <input type="text" name="nameRomanized" formControlName="nameRomanized" placeholder="Artist romanized name" id="nameRomanized">
+    </div>
+    <div>
+      <label for="country">Country:</label>
+      <input type="text" name="country" formControlName="country" placeholder="Artist country" id="country" required>
+    </div>
+    <div>
+      <button type="submit">Accept</button>
+      <button (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

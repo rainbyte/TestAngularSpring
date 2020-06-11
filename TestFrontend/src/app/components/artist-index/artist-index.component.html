@@ -1,0 +1,25 @@
+<div class="root">
+  <h2>Artists</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Native name</th>
+        <th>Romanized name</th>
+        <th>Country</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let artist of artists">
+        <td>{{ artist.nameNative }}</td>
+        <td>{{ artist.nameRomanized }}</td>
+        <td>{{ artist.country }}</td>
+        <td>
+          <button (click)="updateArtist(artist)">Edit</button>
+          <button (click)="deleteArtist(artist)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="createArtist()">Add</button>
+</div>

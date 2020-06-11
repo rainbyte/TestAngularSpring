@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb:10.4
+    container_name: mariadb
+    working_dir: /application
+    volumes:
+      - .:/application
+    environment:
+      - MYSQL_ROOT_PASSWORD=qwerty
+      - MYSQL_DATABASE=database1
+      - MYSQL_USER=usuario1
+      - MYSQL_PASSWORD=clave1
+    ports:
+      - "1028:3306"
+
+  tomcat:
+    image: tomcat
+    container_name: tomcat
+    volumes:
+      - ./build/libs/TestBackend-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/myapp.war
+    ports:
+      - "8080:8080"
+    links:
+      - mariadb

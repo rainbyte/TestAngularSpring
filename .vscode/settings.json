@@ -1,0 +1,37 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#bb0000",
+        "activityBar.activeBorder": "#002000",
+        "activityBar.background": "#bb0000",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#002000",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "statusBar.background": "#880000",
+        "statusBar.border": "#880000",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#bb0000",
+        "titleBar.activeBackground": "#880000",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.border": "#880000",
+        "titleBar.inactiveBackground": "#88000099",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#880000",
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "database1",
+            "driver": "MariaDB",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "database1",
+            "password": "clave1",
+            "port": 1028,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "usuario1"
+        }
+    ]
+}

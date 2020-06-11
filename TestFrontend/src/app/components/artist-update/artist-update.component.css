@@ -1,0 +1,40 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #FF00FF;
+  padding: 0px 15px;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+}
+
+form div label {
+  width: 150px;
+  font-weight: bold;
+}
+
+form div button {
+  margin: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  form div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  form div button {
+    margin: 5px;
+  }
+}
