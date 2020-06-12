@@ -2,10 +2,10 @@
 
 ## Backend
 
-1. Build project: `gradle build`
-2. Generate war: `gradle war`
-3. Start database: `docker-compose up mariadb`
-4. Start tomcat: `docker-compose up tomcat`
+1. Start database: `docker-compose up mariadb`
+2. Start tomcat: `docker-compose up tomcat`
+3. Build project: `gradle build`
+4. Deploy war: `make deploy`
 
 ## Frontend
 
