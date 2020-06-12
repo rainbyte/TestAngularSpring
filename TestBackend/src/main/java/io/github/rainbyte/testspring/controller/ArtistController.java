@@ -2,11 +2,12 @@ package io.github.rainbyte.testspring.controller;
 
 import java.util.List;
 
+import io.github.rainbyte.testspring.dto.ArtistDTO;
+import io.github.rainbyte.testspring.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import io.github.rainbyte.testspring.entity.Artist;
-import io.github.rainbyte.testspring.service.ArtistService;
 
 @RestController
 @RequestMapping("/artists")
@@ -29,7 +30,7 @@ class ArtistController {
 
     @CrossOrigin
     @PostMapping
-    public Artist addArtist(@RequestBody Artist artist) {
+    public ArtistDTO addArtist(@RequestBody ArtistDTO artist) {
         artist.setId(0);
         artistService.save(artist);
         return artist;
@@ -37,7 +38,7 @@ class ArtistController {
 
     @CrossOrigin
     @PutMapping
-    public Artist updateArtist(@RequestBody Artist artist) {
+    public ArtistDTO updateArtist(@RequestBody ArtistDTO artist) {
         artistService.save(artist);
         return artist;
     }

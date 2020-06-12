@@ -1,44 +1,38 @@
-package io.github.rainbyte.testspring.entity;
+package io.github.rainbyte.testspring.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import io.github.rainbyte.testspring.entity.Artist;
 
-@Entity
-@Table(name="artists")
-public class Artist {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
+public class ArtistDTO implements GenericDTO<Artist> {
     private int id;
-
-    @Column(name="name_native")
     private String nameNative;
-
-    @Column(name="name_romanized")
     private String nameRomanized;
-
-    @Column(name="country")
     private String country;
 
-    public Artist() {}
-
-    public Artist(int id, String nameNative, String nameRomanized, String country) {
+    public ArtistDTO(int id, String nameNative, String nameRomanized, String country) {
         this.id = id;
         this.nameNative = nameNative;
         this.nameRomanized = nameRomanized;
         this.country = country;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public ArtistDTO fromEntity(Artist artist) {
+        return new ArtistDTO(artist.getId(), artist.getNameNative(), artist.getNameRomanized(), artist.getCountry());
+    }
+
+    @Override
+    public Artist toEntity() {
+        return new Artist(id, nameNative, nameRomanized, country);
     }
 
     public String getNameNative() {

@@ -1,4 +1,4 @@
-package io.github.rainbyte.testspring.dao;
+package io.github.rainbyte.testspring.repo;
 
 import java.util.List;
 
@@ -12,10 +12,20 @@ import io.github.rainbyte.testspring.entity.Artist;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ArtistDAOImpl implements ArtistDAO {
+public class ArtistRepo implements GenericRepo<Artist> {
 
     @Autowired
     private EntityManager entityManager;
+
+    @Override
+    public Class<Artist> toEntityClass() {
+        return Artist.class;
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 
     @Override
     public List<Artist> findAll() {
