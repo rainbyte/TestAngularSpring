@@ -19,7 +19,7 @@ services:
     image: tomcat
     container_name: tomcat
     volumes:
-      - ./build/libs/TestBackend-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/myapp.war
+      - ./webapps/:/usr/local/tomcat/webapps/
     ports:
       - "8080:8080"
     links:
