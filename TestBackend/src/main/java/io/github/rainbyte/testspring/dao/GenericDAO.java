@@ -19,7 +19,12 @@ public interface GenericDAO<T> {
 
     default void save(GenericDTO<T> dto) {
         T entity = dto.toEntity();
-        getRepo().save(entity);
+        if (dto.getId() == 0) {
+            int id = getRepo().save(entity);
+            dto.setId(id);
+        } else {
+            getRepo().update(entity);
+        }
     }
 
     default void deleteById(int id) {

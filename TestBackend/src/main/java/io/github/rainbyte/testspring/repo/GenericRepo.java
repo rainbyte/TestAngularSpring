@@ -21,8 +21,12 @@ public interface GenericRepo<T> {
         return getSession().get(toEntityClass(), id);
     }
 
-    default void save(T entity) {
-        getSession().saveOrUpdate(entity);
+    default int save(T entity) {
+        return (int) getSession().save(entity);
+    }
+
+    default void update(T entity) {
+        getSession().update(entity);
     }
 
     // FIXME: fails with custom annotated entity names
