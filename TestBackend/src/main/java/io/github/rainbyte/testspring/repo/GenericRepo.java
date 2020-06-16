@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
@@ -12,8 +13,7 @@ public interface GenericRepo<T> {
     EntityManager getEntityManager();
 
     default List<T> findAll() {
-        Query<T> query = getSession().createQuery("FROM :table", toEntityClass());
-        query.setParameter("table", toEntityClass().toString());
+        Query<T> query = getSession().createQuery("FROM " + toEntityClass().getName(), toEntityClass());
         return query.getResultList();
     }
 
@@ -25,10 +25,11 @@ public interface GenericRepo<T> {
         getSession().saveOrUpdate(entity);
     }
 
+    // FIXME: fails with custom annotated entity names
+    @Transactional
     default void deleteById(int id) {
-        Query<T> query = getSession().createQuery("DELETE FROM :table WHERE id=:id");
+        Query<T> query = getSession().createQuery("DELETE FROM " + toEntityClass().getName() + " WHERE id=:id");
         query.setParameter("id", id);
-        query.setParameter("table", toEntityClass().toString()); // FIXME: fails with custom annotated names
         query.executeUpdate();
     }
 
