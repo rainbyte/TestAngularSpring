@@ -9,12 +9,12 @@ public interface GenericService<T> {
 
     GenericDAO<T> getDAO();
 
-    default List<T> findAll() {
-        return getDAO().findAll();
+    default <U extends GenericDTO<T>> List<U> findAll() {
+        return (List<U>) getDAO().findAll();
     }
 
-    default T findById(int id) {
-        return getDAO().findById(id);
+    default <U extends GenericDTO<T>> U findById(int id) {
+        return (U) getDAO().findById(id);
     }
 
     default void save(GenericDTO<T> dto) {

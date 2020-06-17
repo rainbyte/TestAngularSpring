@@ -15,6 +15,13 @@ public class ArtistDTO implements GenericDTO<Artist> {
         this.country = country;
     }
 
+    public ArtistDTO(Artist artist) {
+        this.id = artist.getId();
+        this.nameNative = artist.getNameNative();
+        this.nameRomanized = artist.getNameRomanized();
+        this.country = artist.getCountry();
+    }
+
     @Override
     public int getId() {
         return id;
@@ -27,7 +34,7 @@ public class ArtistDTO implements GenericDTO<Artist> {
 
     @Override
     public ArtistDTO fromEntity(Artist artist) {
-        return new ArtistDTO(artist.getId(), artist.getNameNative(), artist.getNameRomanized(), artist.getCountry());
+        return new ArtistDTO(artist);
     }
 
     @Override
