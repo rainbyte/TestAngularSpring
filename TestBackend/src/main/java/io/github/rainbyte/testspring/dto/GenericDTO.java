@@ -1,8 +1,6 @@
 package io.github.rainbyte.testspring.dto;
 
-public interface GenericDTO<T> {
+public interface GenericDTO {
     int getId();
     void setId(int id);
-    GenericDTO<T> fromEntity(T entity);
-    T toEntity();
 }

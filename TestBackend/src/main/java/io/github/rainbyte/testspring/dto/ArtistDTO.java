@@ -1,8 +1,6 @@
 package io.github.rainbyte.testspring.dto;
 
-import io.github.rainbyte.testspring.entity.Artist;
-
-public class ArtistDTO implements GenericDTO<Artist> {
+public class ArtistDTO implements GenericDTO {
     private int id;
     private String nameNative;
     private String nameRomanized;
@@ -15,13 +13,6 @@ public class ArtistDTO implements GenericDTO<Artist> {
         this.country = country;
     }
 
-    public ArtistDTO(Artist artist) {
-        this.id = artist.getId();
-        this.nameNative = artist.getNameNative();
-        this.nameRomanized = artist.getNameRomanized();
-        this.country = artist.getCountry();
-    }
-
     @Override
     public int getId() {
         return id;
@@ -30,16 +21,6 @@ public class ArtistDTO implements GenericDTO<Artist> {
     @Override
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Override
-    public ArtistDTO fromEntity(Artist artist) {
-        return new ArtistDTO(artist);
-    }
-
-    @Override
-    public Artist toEntity() {
-        return new Artist(id, nameNative, nameRomanized, country);
     }
 
     public String getNameNative() {

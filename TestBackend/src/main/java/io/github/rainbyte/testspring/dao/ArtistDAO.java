@@ -1,7 +1,5 @@
 package io.github.rainbyte.testspring.dao;
 
-import io.github.rainbyte.testspring.dto.ArtistDTO;
-import io.github.rainbyte.testspring.dto.GenericDTO;
 import io.github.rainbyte.testspring.entity.Artist;
 import io.github.rainbyte.testspring.repo.ArtistRepo;
 import io.github.rainbyte.testspring.repo.GenericRepo;
@@ -16,10 +14,5 @@ public class ArtistDAO implements GenericDAO<Artist> {
     @Override
     public GenericRepo<Artist> getRepo() {
         return artistRepo;
-    }
-
-    @Override
-    public ArtistDTO entityToDTO(Artist entity) {
-        return new ArtistDTO(entity);
     }
 }
