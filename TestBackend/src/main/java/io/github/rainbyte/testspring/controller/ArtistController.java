@@ -44,7 +44,8 @@ class ArtistController {
     public ResponseEntity<ResponseWrapper<ArtistDTO>> addArtist(@RequestBody ArtistDTO artist) {
         try {
             Validation.checkString(artist.getNameNative(), "NativeName should not be empty");
-            Validation.checkString(artist.getCountry(), "Country should not be empty");
+            Validation.checkNull(artist.getCountry(), "Country should not be empty");
+            Validation.checkString(artist.getCountry().getName(), "Country name is invalid");
             artist.setId(0);
             artistService.save(artist);
             return responseSuccess(artist);

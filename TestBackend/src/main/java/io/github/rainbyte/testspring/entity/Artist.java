@@ -22,11 +22,11 @@ public class Artist {
     private String nameRomanized;
 
     @Column(name="country")
-    private String country;
+    private int country;
 
     public Artist() {}
 
-    public Artist(int id, String nameNative, String nameRomanized, String country) {
+    public Artist(int id, String nameNative, String nameRomanized, int country) {
         this.id = id;
         this.nameNative = nameNative;
         this.nameRomanized = nameRomanized;
@@ -57,11 +57,11 @@ public class Artist {
         this.nameRomanized = nameRomanized;
     }
 
-    public String getCountry() {
+    public int getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(int country) {
         this.country = country;
     }
 }

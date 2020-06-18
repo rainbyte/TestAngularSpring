@@ -4,9 +4,9 @@ public class ArtistDTO implements GenericDTO {
     private int id;
     private String nameNative;
     private String nameRomanized;
-    private String country;
+    private CountryDTO country;
 
-    public ArtistDTO(int id, String nameNative, String nameRomanized, String country) {
+    public ArtistDTO(int id, String nameNative, String nameRomanized, CountryDTO country) {
         this.id = id;
         this.nameNative = nameNative;
         this.nameRomanized = nameRomanized;
@@ -39,11 +39,11 @@ public class ArtistDTO implements GenericDTO {
         this.nameRomanized = nameRomanized;
     }
 
-    public String getCountry() {
+    public CountryDTO getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(CountryDTO country) {
         this.country = country;
     }
 }
