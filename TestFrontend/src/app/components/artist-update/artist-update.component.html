@@ -11,7 +11,10 @@
     </div>
     <div>
       <label for="country">Country:</label>
-      <input type="text" name="country" formControlName="country" placeholder="Artist country" id="country" required>
+      <select formControlName="country">
+        <option value="" disabled>Artist country</option>
+        <option *ngFor="let c of countries" [ngValue]="c" [selected]="c.id === updateForm.get('country.id').value">{{ c.name }}</option>
+      </select>
     </div>
     <div>
       <button type="submit">Accept</button>

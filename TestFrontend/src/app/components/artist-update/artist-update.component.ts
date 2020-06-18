@@ -5,6 +5,7 @@ import { first } from "rxjs/operators";
 
 import { ArtistService } from "../../service/artist.service";
 import { Artist } from 'src/app/model/artist.model';
+import { Country } from 'src/app/model/country.model';
 
 @Component({
   selector: 'artist-update',
@@ -15,6 +16,7 @@ import { Artist } from 'src/app/model/artist.model';
 export class ArtistUpdateComponent {
 
   updateForm: FormGroup;
+  countries: Country[];
 
   constructor(private formBuilder: FormBuilder, private router: Router,
     private artistService: ArtistService) { }
@@ -30,8 +32,15 @@ export class ArtistUpdateComponent {
       id: [],
       nameNative: ['', Validators.required],
       nameRomanized: [],
-      country: ['', Validators.required]
+      country: this.formBuilder.group({
+        id: [],
+        name: ['', Validators.required]
+      })
     });
+    this.artistService.getCountries()
+      .subscribe(
+        (datum: Country[]) => { this.countries = datum; },
+        error => { alert(error); });
     this.artistService.getArtistById(+artistId)
       .subscribe((artist: Artist) => {
         this.updateForm.setValue(artist)

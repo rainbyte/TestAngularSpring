@@ -13,7 +13,7 @@
       <tr *ngFor="let artist of artists">
         <td>{{ artist.nameNative }}</td>
         <td>{{ artist.nameRomanized }}</td>
-        <td>{{ artist.country }}</td>
+        <td>{{ artist.country.name }}</td>
         <td>
           <button (click)="updateArtist(artist)">Edit</button>
           <button (click)="deleteArtist(artist)">Delete</button>

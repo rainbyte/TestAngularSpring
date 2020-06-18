@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 
 import { ArtistService } from "../../service/artist.service";
 import { Artist } from 'src/app/model/artist.model';
+import { Country } from 'src/app/model/country.model';
 
 @Component({
   selector: 'artist-create',
@@ -13,6 +14,7 @@ import { Artist } from 'src/app/model/artist.model';
 
 export class ArtistCreateComponent {
   createForm: FormGroup;
+  countries: Country[];
 
   constructor(private formBuilder: FormBuilder, private router: Router,
     private artistService: ArtistService) { }
@@ -22,8 +24,15 @@ export class ArtistCreateComponent {
       id: [],
       nameNative: ['', Validators.required],
       nameRomanized: [],
-      country: ['', Validators.required]
+      country: this.formBuilder.group({
+        id: [],
+        name: ['', Validators.required]
+      })
     });
+    this.artistService.getCountries()
+      .subscribe(
+        (datum: Country[]) => { this.countries = datum; },
+        error => { alert(error); });
   }
 
   onAccept() {
