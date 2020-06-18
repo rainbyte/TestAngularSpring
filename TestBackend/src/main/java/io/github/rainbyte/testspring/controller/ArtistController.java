@@ -3,7 +3,9 @@ package io.github.rainbyte.testspring.controller;
 import java.util.List;
 
 import io.github.rainbyte.testspring.dto.ArtistDTO;
+import io.github.rainbyte.testspring.dto.CountryDTO;
 import io.github.rainbyte.testspring.service.ArtistService;
+import io.github.rainbyte.testspring.service.CountryService;
 import io.github.rainbyte.testspring.utils.AppException;
 import io.github.rainbyte.testspring.utils.ResponseWrapper;
 import io.github.rainbyte.testspring.utils.Validation;
@@ -20,6 +22,9 @@ class ArtistController {
 
     @Autowired
     private ArtistService artistService;
+
+    @Autowired
+    private CountryService countryService;
 
     @CrossOrigin
     @GetMapping
@@ -77,5 +82,11 @@ class ArtistController {
         } catch (AppException e) {
             return responseFailure(e.getMessage());
         }
+    }
+
+    @CrossOrigin
+    @GetMapping("/countries")
+    public ResponseEntity<ResponseWrapper<List<CountryDTO>>> countries() {
+        return responseSuccess(countryService.findAll());
     }
 }
