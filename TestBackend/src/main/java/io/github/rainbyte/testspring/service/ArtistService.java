@@ -2,6 +2,7 @@ package io.github.rainbyte.testspring.service;
 
 import io.github.rainbyte.testspring.dao.ArtistDAO;
 import io.github.rainbyte.testspring.dao.GenericDAO;
+import io.github.rainbyte.testspring.dto.AlbumDTO;
 import io.github.rainbyte.testspring.dto.ArtistDTO;
 import io.github.rainbyte.testspring.dto.CountryDTO;
 import io.github.rainbyte.testspring.entity.Artist;
@@ -10,12 +11,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public class ArtistService implements GenericService<Artist, ArtistDTO> {
 
     @Autowired
     private ArtistDAO artistDAO;
+
+    @Autowired
+    private AlbumService albumService;
 
     @Autowired
     private CountryService countryService;
@@ -27,9 +33,10 @@ public class ArtistService implements GenericService<Artist, ArtistDTO> {
 
     @Override
     public ArtistDTO toDTO(Artist artist) {
+        Collection<AlbumDTO> albums = albumService.findByArtistId(artist.getId());
         CountryDTO countryDTO = countryService.findById(artist.getCountry());
         return (countryDTO != null)
-            ? new ArtistDTO(artist.getId(), artist.getNameNative(), artist.getNameRomanized(), countryDTO)
+            ? new ArtistDTO(artist.getId(), artist.getNameNative(), artist.getNameRomanized(), countryDTO, albums)
             : null;
     }
 

@@ -37,7 +37,7 @@ public interface GenericRepo<T> {
         query.executeUpdate();
     }
 
-    private Session getSession() {
+    default Session getSession() {
         return getEntityManager().unwrap(Session.class);
     }
 }
