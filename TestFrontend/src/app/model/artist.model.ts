@@ -1,3 +1,4 @@
+import { Album } from './album.model';
 import { Country } from './country.model';
 
 export class Artist {
@@ -5,4 +6,5 @@ export class Artist {
   nameNative: string;
   nameRomanized: string;
   country: Country;
+  albums: Album[];
 }

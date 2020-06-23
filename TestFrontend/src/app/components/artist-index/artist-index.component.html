@@ -6,6 +6,7 @@
         <th>Native name</th>
         <th>Romanized name</th>
         <th>Country</th>
+        <th>Albums</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -14,6 +15,9 @@
         <td>{{ artist.nameNative }}</td>
         <td>{{ artist.nameRomanized }}</td>
         <td>{{ artist.country.name }}</td>
+        <td>
+          <button (click)="viewAlbums(artist)">{{ artist.albums.length }} albums</button>
+        </td>
         <td>
           <button (click)="updateArtist(artist)">Edit</button>
           <button (click)="deleteArtist(artist)">Delete</button>

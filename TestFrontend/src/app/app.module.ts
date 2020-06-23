@@ -9,13 +9,15 @@ import { ArtistUpdateComponent } from './components/artist-update/artist-update.
 import { routing } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
+import { ArtistAlbumsIndexComponent } from './components/artist-albums-index/artist-albums-index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtistCreateComponent,
     ArtistIndexComponent,
-    ArtistUpdateComponent
+    ArtistUpdateComponent,
+    ArtistAlbumsIndexComponent
   ],
   imports: [
     BrowserModule,

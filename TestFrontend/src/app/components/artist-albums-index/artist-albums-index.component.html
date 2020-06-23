@@ -1,0 +1,20 @@
+<div class="root">
+  <h2>Albums</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Native name</th>
+        <th>Romaji name</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let album of albums">
+        <td>{{ album.nameNative }}</td>
+        <td>{{ album.nameRomaji === null ? '-' : album.nameRomaji }}</td>
+        <td>{{ album.year }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="goBack()">Go back</button>
+</div>

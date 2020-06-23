@@ -38,4 +38,10 @@ export class ArtistIndexComponent implements OnInit {
         this.artists = this.artists.filter(x => x !== artist);
       });
   }
+
+  viewAlbums(artist: Artist) {
+    localStorage.removeItem("albumsArtistId");
+    localStorage.setItem("albumsArtistId", artist.id.toString());
+    this.router.navigate(["artist-albums-index"]);
+  }
 }
