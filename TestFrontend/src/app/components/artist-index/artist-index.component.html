@@ -13,13 +13,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let artist of artists">
-        <td>{{ artist.nameNative }}</td>
-        <td>{{ artist.nameRomanized }}</td>
-        <td>{{ artist.country.name }}</td>
-        <td>
+        <td data-label="Native name">{{ artist.nameNative }}</td>
+        <td data-label="Romanized name">{{ artist.nameRomanized }}</td>
+        <td data-label="Country">{{ artist.country.name }}</td>
+        <td data-label="Albums">
           <button (click)="viewAlbums(artist)">{{ artist.albums.length }} albums</button>
         </td>
-        <td>
+        <td data-label="Actions">
           <button (click)="updateArtist(artist)">Edit</button>
           <button (click)="deleteArtist(artist)">Delete</button>
         </td>
