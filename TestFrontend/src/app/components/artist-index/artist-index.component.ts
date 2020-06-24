@@ -12,13 +12,15 @@ import { ArtistService } from "../../service/artist.service";
 
 export class ArtistIndexComponent implements OnInit {
   artists: Artist[];
+  artistsRaw: Artist[];
 
   constructor(private router: Router, private artistService: ArtistService) { }
 
   ngOnInit() {
     this.artistService.getArtists()
       .subscribe(artists => {
-        this.artists = artists;
+        this.artistsRaw = artists;
+        this.filterArtists(null);
       })
   }
 
@@ -43,5 +45,18 @@ export class ArtistIndexComponent implements OnInit {
     localStorage.removeItem("albumsArtistId");
     localStorage.setItem("albumsArtistId", artist.id.toString());
     this.router.navigate(["artist-albums-index"]);
+  }
+
+  filterArtists(searchString) {
+    if (searchString === null || searchString === "") {
+      this.artists = this.artistsRaw;
+    } else {
+      this.artists = this.artistsRaw.filter(artist => {
+        const searchNorm = searchString.toLowerCase();
+        const nativeNorm = artist.nameNative.toLowerCase();
+        const romajiNorm = artist.nameRomanized.toLowerCase();
+        return nativeNorm.includes(searchNorm) || romajiNorm.includes(searchNorm);
+      })
+    }
   }
 }
